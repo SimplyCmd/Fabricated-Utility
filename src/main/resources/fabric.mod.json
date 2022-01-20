@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "id": "modid",
+  "id": "fabricated_utility",
   "version": "${version}",
 
   "name": "Mod Name",
@@ -19,19 +19,19 @@
   },
 
   "license": "MIT",
-  "icon": "assets/modid/icon.png",
+  "icon": "assets/fabricated_utility/icon.png",
 
   "environment": "*",
   "entrypoints": {
     "main": [
-      "simplycmd.modid.Main"
+      "simplycmd.fabricated_utility.Main"
     ],
     "client": [
-      "simplycmd.modid.Main"
+      "simplycmd.fabricated_utility.Main"
     ]
   },
   "mixins": [
-    "modid.mixins.json"
+    "fabricated_utility.mixins.json"
   ],
 
   "depends": {

@@ -1,9 +1,10 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "simplycmd.modid.mixin",
+  "package": "simplycmd.fabricated_utility.mixin",
   "compatibilityLevel": "JAVA_16",
   "mixins": [
+    "MerchantScreenMixin"
   ],
   "client": [
   ],
