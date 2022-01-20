@@ -4,9 +4,9 @@
   "package": "simplycmd.fabricated_utility.mixin",
   "compatibilityLevel": "JAVA_16",
   "mixins": [
-    "MerchantScreenMixin"
   ],
   "client": [
+    "MerchantScreenMixin"
   ],
   "injectors": {
     "defaultRequire": 1

@@ -33,6 +33,7 @@
   "mixins": [
     "fabricated_utility.mixins.json"
   ],
+  "accessWidener" : "fabricated_utility.accesswidener",
 
   "depends": {
     "fabricloader": ">=0.11.3",
