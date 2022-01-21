@@ -1,3 +1,3 @@
 accessWidener    v1    named
-accessible    method    net/minecraft/entity/passive/VillagerEntity    fillRecipes    ()V
-accessible    method    net/minecraft/entity/passive/VillagerEntity    beginTradeWith    (Lnet/minecraft/entity/player/PlayerEntity;)V
+accessible    method    net/minecraft/entity/passive/MerchantEntity    fillRecipes    ()V
+accessible    method    net/minecraft/entity/passive/MerchantEntity    beginTradeWith    (Lnet/minecraft/entity/player/PlayerEntity;)V
