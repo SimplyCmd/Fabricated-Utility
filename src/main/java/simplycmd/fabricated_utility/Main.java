@@ -26,7 +26,7 @@ import static simplycmd.fabricated_utility.villagers.pickup.VillagerItemRenderer
 
 public class Main implements ModInitializer, ClientModInitializer {
     private VillagerEntityRenderer renderer;
-    public static final KeyBinding PICK_UP_VILLAGER = new KeyBinding("key.easy_villagers.pick_up", GLFW.GLFW_KEY_V, "category.easy_villagers");
+    //public static final KeyBinding PICK_UP_VILLAGER = new KeyBinding("key.easy_villagers.pick_up", GLFW.GLFW_KEY_V, "category.easy_villagers");
     public static final String MOD_ID = "fabricated_utility";
     public static final Logger LOGGER = LogManager.getLogger(MOD_ID);
     public static final VillagerItem VILLAGER_ITEM = Registry.register(Registry.ITEM, new Identifier(MOD_ID, "villager_item"), new VillagerItem());
@@ -34,7 +34,7 @@ public class Main implements ModInitializer, ClientModInitializer {
 
     @Override
     public void onInitialize() {
-        KeyBindingHelper.registerKeyBinding(PICK_UP_VILLAGER);
+        //KeyBindingHelper.registerKeyBinding(PICK_UP_VILLAGER);
         GuiEvents.init();
         BetterVillagers.init();
         LOGGER.info(MOD_ID + " activated :O");
