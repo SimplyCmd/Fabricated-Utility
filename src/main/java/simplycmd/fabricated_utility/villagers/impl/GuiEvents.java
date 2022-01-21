@@ -58,9 +58,11 @@ public class GuiEvents {
             ItemStack slot1 = handler.getSlot(1).getStack().copy();
             handler.getSlot(0).setStack(ItemStack.EMPTY);
             handler.getSlot(1).setStack(ItemStack.EMPTY);
-            handler.getSlot(2).setStack(ItemStack.EMPTY);
-            player.getInventory().offerOrDrop(slot0);
-            player.getInventory().offerOrDrop(slot1);
+            //handler.getSlot(2).setStack(ItemStack.EMPTY);
+            //player.getInventory().offerOrDrop(slot0);
+            //player.getInventory().offerOrDrop(slot1);
+            handler.getSlot(0).setStack(slot0);
+            handler.getSlot(1).setStack(slot1);
             player.sendTradeOffers(handler.syncId, entity.getOffers(), villagerEntity.getVillagerData().getLevel(), entity.getExperience(), entity.isLeveledMerchant(), villagerEntity.canRestock());
             return;
         }
