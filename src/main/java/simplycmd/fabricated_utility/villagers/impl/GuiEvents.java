@@ -7,6 +7,7 @@ import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.minecraft.client.gui.screen.ingame.MerchantScreen;
 import net.minecraft.entity.passive.MerchantEntity;
 import net.minecraft.entity.passive.VillagerEntity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.screen.MerchantScreenHandler;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.minecraft.util.Identifier;
@@ -53,6 +54,13 @@ public class GuiEvents {
         if ((entity instanceof VillagerEntity villagerEntity)) {
             entity.offers = null;
             recalculateOffers(villagerEntity);
+            ItemStack slot0 = handler.getSlot(0).getStack().copy();
+            ItemStack slot1 = handler.getSlot(1).getStack().copy();
+            handler.getSlot(0).setStack(ItemStack.EMPTY);
+            handler.getSlot(1).setStack(ItemStack.EMPTY);
+            handler.getSlot(2).setStack(ItemStack.EMPTY);
+            player.getInventory().offerOrDrop(slot0);
+            player.getInventory().offerOrDrop(slot1);
             player.sendTradeOffers(handler.syncId, entity.getOffers(), villagerEntity.getVillagerData().getLevel(), entity.getExperience(), entity.isLeveledMerchant(), villagerEntity.canRestock());
             return;
         }
