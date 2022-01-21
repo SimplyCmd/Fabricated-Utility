@@ -12,7 +12,6 @@ import simplycmd.fabricated_utility.villagers.BetterVillagers;
 import simplycmd.fabricated_utility.villagers.impl.GuiEvents;
 
 public class Main implements ModInitializer {
-    private Main(){}
     public static final String MOD_ID = "fabricated_utility";
     public static final Logger LOGGER = LogManager.getLogger(MOD_ID);
 
