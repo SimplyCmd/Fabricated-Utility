@@ -31,6 +31,9 @@
   "entrypoints": {
     "main": [
       "simplycmd.fabricated_utility.Main"
+    ],
+    "client": [
+      "simplycmd.fabricated_utility.Main"
     ]
   },
   "mixins": [
