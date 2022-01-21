@@ -4,6 +4,7 @@
   "package": "simplycmd.fabricated_utility.villagers.mixin",
   "compatibilityLevel": "JAVA_16",
   "mixins": [
+    "VillagerEntityMixin",
     "WanderingTraderMixin"
   ],
   "client": [
