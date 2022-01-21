@@ -4,7 +4,8 @@
   "package": "simplycmd.fabricated_utility.mixin",
   "compatibilityLevel": "JAVA_16",
   "mixins": [
-    "MerchantEntityAccessor"
+    "MerchantEntityAccessor",
+    "MerchantScreenHandlerAccessor"
   ],
   "client": [
     "MerchantScreenMixin"
