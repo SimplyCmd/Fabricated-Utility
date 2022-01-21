@@ -15,6 +15,7 @@ import simplycmd.fabricated_utility.Main;
 public class VillagerEntityMixin {
     @Inject(method = "interactMob", at = @At("HEAD"))
     private void interact(PlayerEntity player, Hand hand, CallbackInfoReturnable<ActionResult> cir) {
+        if (!player.isSneaking()) return;
         pickUp((VillagerEntity) (Object) this, player);
     }
 
