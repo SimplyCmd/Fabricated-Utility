@@ -1,4 +1,7 @@
 accessWidener    v1    named
-accessible    method    net/minecraft/entity/passive/MerchantEntity    fillRecipes    ()V
-accessible    method    net/minecraft/entity/passive/MerchantEntity    beginTradeWith    (Lnet/minecraft/entity/player/PlayerEntity;)V
+accessible method net/minecraft/entity/passive/MerchantEntity fillRecipes ()V
+accessible method net/minecraft/entity/passive/MerchantEntity beginTradeWith (Lnet/minecraft/entity/player/PlayerEntity;)V
 accessible method net/minecraft/client/gui/screen/Screen addDrawableChild (Lnet/minecraft/client/gui/Element;)Lnet/minecraft/client/gui/Element;
+accessible field net/minecraft/screen/MerchantScreenHandler merchant Lnet/minecraft/village/Merchant;
+accessible method net/minecraft/entity/passive/VillagerEntity canRestock ()Z
+accessible field net/minecraft/entity/passive/MerchantEntity offers Lnet/minecraft/village/TradeOfferList;
