@@ -3,7 +3,7 @@
   "id": "fabricated_utility",
   "version": "${version}",
 
-  "name": "Mod Name",
+  "name": "Fabricated Utility",
   "description": "wow mod thats incredible i love mods!",
   "authors": [
     {
@@ -48,5 +48,8 @@
     "java": ">=17"
   },
   "suggests": {
+  },
+  "custom": {
+    "fabricated:module-lifecycle": "stable"
   }
 }
