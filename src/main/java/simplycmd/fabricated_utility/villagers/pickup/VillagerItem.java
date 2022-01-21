@@ -5,6 +5,7 @@ import net.fabricmc.api.Environment;
 import net.fabricmc.fabric.api.item.v1.FabricItem;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.DispenserBlock;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.item.ItemRenderer;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.passive.VillagerEntity;
@@ -12,6 +13,9 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemUsageContext;
 import net.minecraft.nbt.NbtCompound;
+import net.minecraft.text.LiteralText;
+import net.minecraft.text.Text;
+import net.minecraft.text.TranslatableText;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Direction;
@@ -84,20 +88,20 @@ public class VillagerItem extends Item implements FabricItem {
         }
     }
 
-//    @OnlyIn(Dist.CLIENT)
-//    @Override
-//    public Component getName(ItemStack stack) {
-//        Level world = Minecraft.getInstance().level;
-//        if (world == null) {
-//            return super.getName(stack);
-//        } else {
-//            EasyVillagerEntity villager = getVillagerFast(world, stack);
-//            if (!villager.hasCustomName() && villager.isBaby()) {
-//                return new TranslatableComponent("item.easy_villagers.baby_villager");
-//            }
-//            return villager.getDisplayName();
-//        }
-//    }
+    @Override
+    @Environment(EnvType.CLIENT)
+    public Text getName(ItemStack stack) {
+        World world = MinecraftClient.getInstance().world;
+        if (world == null) {
+            return super.getName(stack);
+        } else {
+            VillagerEntity villager = getVillagerFast(world, stack);
+            if (!villager.hasCustomName() && villager.isBaby()) {
+                return new LiteralText("Baby ").append(new TranslatableText(EntityType.VILLAGER.getTranslationKey()));
+            }
+            return villager.getDisplayName();
+        }
+    }
 
     public VillagerEntity getVillagerFast(World world, ItemStack stack) {
         return cachedVillagers.get(stack, () -> getVillager(world, stack));

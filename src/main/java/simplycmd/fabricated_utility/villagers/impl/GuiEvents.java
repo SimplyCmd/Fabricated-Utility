@@ -68,6 +68,7 @@ public class GuiEvents {
         }
 
         if (!(entity instanceof BetterVillagersExtension extension)) return;
+        if (!extension.betterVillagers$supportsBetterVillagers()) return;
         entity.offers = null;
         entity.getOffers();
         player.sendTradeOffers(handler.syncId, entity.getOffers(), extension.betterVillagers$getLevel(), entity.getExperience(), entity.isLeveledMerchant(), extension.betterVillagers$canRestock());

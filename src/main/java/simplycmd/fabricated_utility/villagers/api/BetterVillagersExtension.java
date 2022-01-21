@@ -8,4 +8,7 @@ public interface BetterVillagersExtension {
 
     boolean betterVillagers$canRestock();
 
+    default boolean betterVillagers$supportsBetterVillagers() {
+        return true;
+    }
 }
