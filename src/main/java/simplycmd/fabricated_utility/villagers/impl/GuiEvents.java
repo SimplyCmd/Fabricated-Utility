@@ -14,8 +14,10 @@ import net.minecraft.util.math.MathHelper;
 import net.minecraft.village.Merchant;
 import net.minecraft.village.TradeOffer;
 import simplycmd.fabricated_utility.Main;
+import simplycmd.fabricated_utility.villagers.api.BetterVillagersExtension;
 
 public class GuiEvents {
+    private GuiEvents(){}
     static {
         ScreenEvents.AFTER_INIT.register(((client, scren, scaledWidth, scaledHeight) -> {
             if (!(scren instanceof MerchantScreen)) return;
@@ -48,10 +50,17 @@ public class GuiEvents {
         if (handler.getExperience() > 0) {
             return;
         }
-        if (!(entity instanceof VillagerEntity)) return;
+        if ((entity instanceof VillagerEntity villagerEntity)) {
+            entity.offers = null;
+            recalculateOffers(villagerEntity);
+            player.sendTradeOffers(handler.syncId, entity.getOffers(), villagerEntity.getVillagerData().getLevel(), entity.getExperience(), entity.isLeveledMerchant(), villagerEntity.canRestock());
+            return;
+        }
+
+        if (!(entity instanceof BetterVillagersExtension extension)) return;
         entity.offers = null;
-        recalculateOffers((VillagerEntity) entity);
-        player.sendTradeOffers(handler.syncId, entity.getOffers(), ((VillagerEntity) entity).getVillagerData().getLevel(), entity.getExperience(), entity.isLeveledMerchant(), ((VillagerEntity) entity).canRestock());
+        entity.getOffers();
+        player.sendTradeOffers(handler.syncId, entity.getOffers(), extension.betterVillagers$getLevel(), entity.getExperience(), entity.isLeveledMerchant(), extension.betterVillagers$canRestock());
     }
 
     public static void recalculateOffers(VillagerEntity villagerEntity) {
@@ -65,17 +74,17 @@ public class GuiEvents {
         }
     }
 
-    private static void calculateOffers(VillagerEntity villager) {
-        int i = getUniversalReputation(villager);
+    private static void calculateOffers(VillagerEntity villagerEntity) {
+        int i = getUniversalReputation(villagerEntity);
         if (i != 0) {
-            for (TradeOffer tradeOffer : villager.getOffers()) {
+            for (TradeOffer tradeOffer : villagerEntity.getOffers()) {
                 tradeOffer.increaseSpecialPrice(-MathHelper.floor((float) i * tradeOffer.getPriceMultiplier()));
             }
         }
     }
 
-    public static int getUniversalReputation(VillagerEntity villager) {
-        return villager.getGossip().getEntityReputationAssociatedGossips().keySet().stream().map(uuid -> villager.getGossip().getReputationFor(uuid, (gossipType) -> true)).reduce(0, Integer::sum);
+    public static int getUniversalReputation(VillagerEntity villagerEntity) {
+        return villagerEntity.getGossip().getEntityReputationAssociatedGossips().keySet().stream().map(uuid -> villagerEntity.getGossip().getReputationFor(uuid, (gossipType) -> true)).reduce(0, Integer::sum);
     }
 
 }
