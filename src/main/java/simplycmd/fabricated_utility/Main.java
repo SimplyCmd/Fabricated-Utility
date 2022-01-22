@@ -9,6 +9,7 @@ import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.option.KeyBinding;
 import net.minecraft.client.render.entity.VillagerEntityRenderer;
+import net.minecraft.client.render.model.json.ModelTransformation;
 import net.minecraft.entity.passive.MerchantEntity;
 import net.minecraft.item.Item;
 import net.minecraft.util.Identifier;
@@ -43,10 +44,21 @@ public class Main implements ModInitializer, ClientModInitializer {
     @Override
     public void onInitializeClient() {
         BuiltinItemRendererRegistry.INSTANCE.register(VILLAGER_ITEM, ((stack, mode, matrices, vertexConsumers, light, overlay) -> {
+            matrices.push();
             if (renderer == null) {
                 renderer = new VillagerEntityRenderer(createEntityRendererContext());
             }
+            if (mode.equals(ModelTransformation.Mode.THIRD_PERSON_LEFT_HAND) || mode.equals(ModelTransformation.Mode.THIRD_PERSON_RIGHT_HAND)) {matrices.pop(); return;}
+            if (mode.equals(ModelTransformation.Mode.FIRST_PERSON_LEFT_HAND)) {
+                matrices.translate(0,0,0);
+                renderer.render(Main.VILLAGER_ITEM.getVillagerFast(MinecraftClient.getInstance().world, stack), 0F, 0F, matrices, vertexConsumers, light);
+                matrices.pop();
+                return;
+            }
+            if (mode.equals(ModelTransformation.Mode.FIRST_PERSON_RIGHT_HAND))
+            matrices.translate(1,0,0);
             renderer.render(Main.VILLAGER_ITEM.getVillagerFast(MinecraftClient.getInstance().world, stack), 0F, false ? 1F : 0F, matrices, vertexConsumers, light);
+            matrices.pop();
         }));
     }
 }
