@@ -1,12 +1,13 @@
 {
   "required": true,
   "minVersion": "0.8",
-  "package": "simplycmd.fabricated_utility.mixin",
+  "package": "simplycmd.fabricated_utility.villagers.mixin",
   "compatibilityLevel": "JAVA_16",
   "mixins": [
+    "VillagerEntityMixin",
+    "WanderingTraderMixin"
   ],
   "client": [
-    "MerchantScreenMixin"
   ],
   "injectors": {
     "defaultRequire": 1

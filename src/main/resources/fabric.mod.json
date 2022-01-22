@@ -3,13 +3,19 @@
   "id": "fabricated_utility",
   "version": "${version}",
 
-  "name": "Mod Name",
+  "name": "Fabricated Utility",
   "description": "wow mod thats incredible i love mods!",
   "authors": [
     {
       "name": "SimplyCmd",
       "contact": {
         "homepage": "https://simplycmd.github.io/"
+      }
+    },
+    {
+      "name": "Jab125",
+      "contact": {
+        "homepage": "https://www.jab125.com/"
       }
     }
   ],
@@ -42,5 +48,8 @@
     "java": ">=17"
   },
   "suggests": {
+  },
+  "custom": {
+    "fabricated:module-lifecycle": "stable"
   }
 }
